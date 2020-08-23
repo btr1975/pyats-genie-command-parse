@@ -1,1 +1,1 @@
-from .pyats_genie_command_parse import GenieDevicelessParserV3
+from .pyats_genie_command_parse import GenieCommandParse
