@@ -11,7 +11,7 @@ __maintainer__ = 'Benjamin P. Trachtenberg'
 __email__ = 'e_ben_75-python@yahoo.com'
 
 
-class GenieCommandParse(object):
+class GenieCommandParse:
     """
     Class to parse string output with Genie without requiring
     a testbed, just parse the string data
@@ -24,7 +24,7 @@ class GenieCommandParse(object):
     """
 
     # This is a Mock Device to engage the parser
-    class MockDevice(object):
+    class MockDevice:
         """
         Class that is a mock device to parse
 
@@ -36,21 +36,32 @@ class GenieCommandParse(object):
             self.show_output_data = show_output_data
 
         def execute(self, *args, **kwargs):
+            """
+            Method to execute the MockDevice
+
+            :type args: Arguments
+            :param args: Unknown
+            :type kwargs: Keywood Arguments
+            :param kwargs: Unknown
+
+            :rtype: String
+            :return: The output data from the show command
+
+            """
             return self.show_output_data
 
     # Set to hold supported nos
     supported_nos = {'nxos', 'ios', 'iosxe', 'iosxr'}
 
     def __init__(self, nos):
-        self.MOCK_PYATS_DEVICE = Device('Mock')
-        self.MOCK_PYATS_DEVICE.custom = {'abstraction': {'order': ['os']}}
+        self.mock_pyats_device = Device('Mock')
+        self.mock_pyats_device.custom = {'abstraction': {'order': ['os']}}
 
         if nos not in self.supported_nos:
             raise LookupError('nos needs to be one of theses options {}'.format(self.supported_nos))
 
-        else:
-            self.nos = nos
-            self.MOCK_PYATS_DEVICE.os = nos
+        self.nos = nos
+        self.mock_pyats_device.os = nos
 
         self.show_output_data = None
         self.show_command = None
@@ -74,8 +85,7 @@ class GenieCommandParse(object):
         if not isinstance(show_output_data, str):
             raise TypeError('show_output_data must be a string received a {}'.format(type(show_output_data)))
 
-        else:
-            self.show_output_data = show_output_data
+        self.show_output_data = show_output_data
 
         if not isinstance(show_command, str):
             raise TypeError('show_command must be a string received a {}'.format(type(show_command)))
@@ -144,9 +154,9 @@ class GenieCommandParse(object):
 
         md = self.MockDevice(self.show_output_data)
         try:
-            found_parser = get_parser(self.__remove_extra_spaces(show_command), self.MOCK_PYATS_DEVICE)[0]
+            found_parser = get_parser(self.__remove_extra_spaces(show_command), self.mock_pyats_device)[0]
             return found_parser(device=md).parse()
 
         except Exception as e:
             raise ModuleNotFoundError('Could not find module_name for command {} '
-                                      'for nos {} from genie: {}'.format(show_command, self.nos, e))
+                                      'for nos {} from genie: {}'.format(show_command, self.nos, e)) from e
