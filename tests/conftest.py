@@ -30,9 +30,19 @@ def ios_show_interfaces_dict():
 
 @pytest.fixture
 def ios_command_parse_object():
-    return GenieCommandParse(nos='ios')
+    yield GenieCommandParse(nos='ios')
 
 
 @pytest.fixture
 def command_parse_class():
-    return GenieCommandParse
+    yield GenieCommandParse
+
+
+@pytest.fixture
+def text_file_location():
+    return './tests/test_data'
+
+
+@pytest.fixture
+def ios_text_file(text_file_location):
+    return '{}/ios_test_data.txt'.format(text_file_location)

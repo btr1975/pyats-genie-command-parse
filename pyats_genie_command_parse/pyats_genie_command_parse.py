@@ -115,6 +115,7 @@ class GenieCommandParse:
         :return: Dictionary of parsed data
 
         :raises TypeError: if the show_command is not a string
+        :raises FileNotFoundError: if the file you are trying to parse can't be found
 
         """
         if not isinstance(show_command, str):
