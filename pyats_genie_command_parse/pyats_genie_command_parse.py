@@ -139,7 +139,7 @@ class GenieCommandParse:
         :raises TypeError: if the string_item is not a string
 
         """
-        if not isinstance(string_item, str):
+        if not isinstance(string_item, str):  # pragma: no cover
             raise TypeError('string_item must be a string received a {}'.format(type(string_item)))
 
         string_item = ' '.join(string_item.split())
@@ -159,7 +159,7 @@ class GenieCommandParse:
         :raises ModuleNotFoundError: If it can not find a command to NOS mapping
 
         """
-        if not isinstance(show_command, str):
+        if not isinstance(show_command, str):  # pragma: no cover
             raise TypeError('show_command must be a string received a {}'.format(type(show_command)))
 
         md = self.MockDevice(self.show_output_data)

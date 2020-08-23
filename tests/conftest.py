@@ -31,3 +31,8 @@ def ios_show_interfaces_dict():
 @pytest.fixture
 def ios_command_parse_object():
     return GenieCommandParse(nos='ios')
+
+
+@pytest.fixture
+def command_parse_class():
+    return GenieCommandParse
