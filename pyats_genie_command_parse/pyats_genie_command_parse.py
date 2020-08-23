@@ -88,8 +88,8 @@ class GenieCommandParse:
         :rtype: Dict
         :return: Dictionary of parsed data
 
-        :raises TypeError if the show_command is not a string
-        :raises TypeError if the show_output_data is not a string
+        :raises TypeError: if the show_command is not a string
+        :raises TypeError: if the show_output_data is not a string
 
         """
         if not isinstance(show_output_data, str):
@@ -114,7 +114,7 @@ class GenieCommandParse:
         :rtype: Dict
         :return: Dictionary of parsed data
 
-        :raises TypeError if the show_command is not a string
+        :raises TypeError: if the show_command is not a string
 
         """
         if not isinstance(show_command, str):
@@ -136,7 +136,7 @@ class GenieCommandParse:
         :rtype: String
         :return: String with single spacing
 
-        :raises TypeError if the string_item is not a string
+        :raises TypeError: if the string_item is not a string
 
         """
         if not isinstance(string_item, str):
@@ -155,7 +155,7 @@ class GenieCommandParse:
         :rtype: Dict
         :return: Dictionary of parsed data
 
-        :raises TypeError if the show_command is not a string
+        :raises TypeError: if the show_command is not a string
         :raises ModuleNotFoundError: If it can not find a command to NOS mapping
 
         """
