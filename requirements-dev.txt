@@ -1,0 +1,5 @@
+pyats[FULL]
+pytest
+pytest-html
+coverage
+pylint

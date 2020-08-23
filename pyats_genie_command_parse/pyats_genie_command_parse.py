@@ -1,3 +1,13 @@
+"""
+This is meant to separate out the genie parsers from Cisco pyats
+
+It allows you to skip the testbed.yml or anything else before parsing the
+output data.
+
+All that is needed to parse the data, is telling the class what NOS, what
+the full command is, and the output string data from the command.
+
+"""
 from genie.libs.parser.utils.common import get_parser
 from pyats.topology import Device
 __author__ = 'Benjamin P. Trachtenberg'
