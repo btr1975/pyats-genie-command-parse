@@ -1,15 +1,37 @@
 from genie.libs.parser.utils.common import get_parser
 from pyats.topology import Device
+__author__ = 'Benjamin P. Trachtenberg'
+__copyright__ = "Copyright (c) 2020, Benjamin P. Trachtenberg"
+__credits__ = 'Brett Gianpettro'
+__license__ = 'The MIT License (MIT)'
+__status__ = 'prod'
+__version_info__ = (1, 2, 0)
+__version__ = '.'.join(map(str, __version_info__))
+__maintainer__ = 'Benjamin P. Trachtenberg'
+__email__ = 'e_ben_75-python@yahoo.com'
 
 
 class GenieCommandParse(object):
     """
     Class to parse string output with Genie without requiring
     a testbed, just parse the string data
+
+    :type nos: String
+    :param nos: One of the following {'nxos', 'ios', 'iosxe', 'iosxr'}
+
+    :raises LookupError: If a supported nos is not found
+
     """
 
     # This is a Mock Device to engage the parser
     class MockDevice(object):
+        """
+        Class that is a mock device to parse
+
+        :type show_output_data: String
+        :param show_output_data: The output data from the show command
+
+        """
         def __init__(self, show_output_data):
             self.show_output_data = show_output_data
 
@@ -128,6 +150,3 @@ class GenieCommandParse(object):
         except Exception as e:
             raise ModuleNotFoundError('Could not find module_name for command {} '
                                       'for nos {} from genie: {}'.format(show_command, self.nos, e))
-
-
-
