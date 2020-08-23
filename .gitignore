@@ -130,3 +130,6 @@ dmypy.json
 
 # No Jetbrains
 .idea/
+
+# Ignor files
+temp_py.py
