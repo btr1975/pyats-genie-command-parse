@@ -1,2 +1,6 @@
 [run]
 command_line= -m pytest
+
+[report]
+include =
+    pyats_genie_command_parse/*
