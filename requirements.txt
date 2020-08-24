@@ -1,1 +1,2 @@
-pyats[FULL]
+pyats
+genie

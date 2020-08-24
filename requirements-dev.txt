@@ -1,4 +1,5 @@
-pyats[FULL]
+pyats
+genie
 pytest
 pytest-html
 coverage
