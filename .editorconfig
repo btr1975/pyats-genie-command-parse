@@ -15,7 +15,7 @@ charset = utf-8
 # Set indent style for Python, JSON, and YAML
 [*.{yml,py,json}]
 indent_style = space
-indent_size = 4
+indent_size = 2
 
 # Set indent style for XML
 [*.xml]
