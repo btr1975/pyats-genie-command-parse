@@ -3,8 +3,8 @@ Holds the version information for the package
 """
 __title__ = 'pyats-genie-command-parse'
 __description__ = 'Run genie parsers directly.'
-__author__ = 'Benjamin P. Trachtenberg'
-__copyright__ = "Copyright (c) 2020 - 2021, Benjamin P. Trachtenberg"
+__author__ = 'Benjamin P. Trachtenberg, Brett Gianpetro'
+__copyright__ = "Copyright (c) 2020 - 2021, Benjamin P. Trachtenberg, Brett Gianpetro"
 __credits__ = None
 __license__ = 'The MIT License (MIT)'
 __status__ = 'prod'

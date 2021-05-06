@@ -13,18 +13,24 @@
 import os
 import sys
 base_path = os.path.split(os.path.join(os.path.abspath(os.path.dirname(__name__))))[0]
-sys.path.append(os.path.join(base_path))
+sys.path.append(base_path)
+about = {}
+with open(os.path.join(base_path, 'pyats_genie_command_parse', 'version.py'), 'r', encoding='utf-8') as f:
+    exec(f.read(), about)
 
+
+# -- Added for readthedocs.org -----------------------------------------------
+
+master_doc = 'index'
 
 # -- Project information -----------------------------------------------------
 
-project = 'pyats-genie-command-parse'
-copyright = '2020, Benjamin Trachtenberg, Brett Gianpetro'
-author = 'Benjamin Trachtenberg, Brett Gianpetro'
-
 # The full version, including alpha/beta/rc tags
-release = '1.2.0'
+release = about['__version__']
 
+project = f'{about["__title__"]} v{release}'
+copyright = about['__copyright__']
+author = about['__author__']
 
 # -- General configuration ---------------------------------------------------
 
@@ -53,7 +59,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'alabaster'
 if html_theme == 'alabaster':
     html_theme_options = {
-        'description': 'E-Trading/STI NSO Automation',
+        'description': 'pyATS Genie, Parse Wrapper',
         'page_width': '95%',
         'body_max_width': 'auto',
         'fixed_sidebar': 'false'
