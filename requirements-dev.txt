@@ -1,7 +1,7 @@
-pyats
-genie
-pytest
-pytest-html
-coverage
-pylint
-sphinx
+-r requirements.txt
+pytest~=6.2.2
+pytest-html~=3.1.1
+coverage~=5.4
+Sphinx~=3.4.3
+pylint~=2.6.0
+twine~=3.3.0
