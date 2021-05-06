@@ -31,11 +31,11 @@ setup(
     long_description_content_type='text/markdown',
     keywords='pyATS genie cisco ios ios-xr nxos parse wrapper',
     url=about['__url__'],
-    # project_urls={
-    #     'Documentation': 'https://ipaddresstools.readthedocs.io/en/latest/',
-    #     'Source': 'https://github.com/btr1975/ipaddresstools',
-    #     'Tracker': 'https://github.com/btr1975/ipaddresstools/issues',
-    # },
+    project_urls={
+        'Documentation': 'https://pyats-genie-command-parse.readthedocs.io/en/latest/',
+        'Source': 'https://github.com/btr1975/pyats-genie-command-parse',
+        'Tracker': 'https://github.com/btr1975/pyats-genie-command-parse/issues',
+    },
     author=about['__author__'],
     author_email=about['__email__'],
     license=about['__license__'],
