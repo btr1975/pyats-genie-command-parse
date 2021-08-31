@@ -112,7 +112,7 @@ class GenieCommandParse:
         if not isinstance(show_command, str):
             raise TypeError('show_command must be a string received a {}'.format(type(show_command)))
 
-        with open(file_name_and_path) as f:
+        with open(file_name_and_path, 'r', encoding='utf-8') as f:
             self.show_output_data = f.read()
 
         return self.__parse(show_command)
