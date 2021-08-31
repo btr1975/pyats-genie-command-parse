@@ -2,6 +2,7 @@
 |---|---|
 | master | [![Unit-Testing, Coverage, Linting](https://github.com/btr1975/pyats-genie-command-parse/actions/workflows/test-coverage-lint.yml/badge.svg?branch=master)](https://github.com/btr1975/pyats-genie-command-parse/actions/workflows/test-coverage-lint.yml) |
 | develop | [![Unit-Testing, Coverage, Linting](https://github.com/btr1975/pyats-genie-command-parse/actions/workflows/test-coverage-lint.yml/badge.svg?branch=develop)](https://github.com/btr1975/pyats-genie-command-parse/actions/workflows/test-coverage-lint.yml) |
+
 [![Downloads](https://pepy.tech/badge/pyats-genie-command-parse)](https://pepy.tech/project/pyats-genie-command-parse)
 [![Supported Versions](https://img.shields.io/pypi/pyversions/pyats-genie-command-parse.svg)](https://pypi.org/project/pyats-genie-command-parse)
 
