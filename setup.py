@@ -14,8 +14,8 @@ packages = [
 ]
 
 install_requires = [
-    'pyats == 21.7',
-    'genie == 21.7',
+    'pyats == 21.12',
+    'genie == 21.12',
 ]
 
 tests_require = [
