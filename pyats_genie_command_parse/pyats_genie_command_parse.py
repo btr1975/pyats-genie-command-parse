@@ -52,7 +52,23 @@ class GenieCommandParse:
             return self.show_output_data
 
     # Set to hold supported nos
-    supported_nos = {'nxos', 'ios', 'iosxe', 'iosxr'}
+    supported_nos = {'aireos',
+                     'apic',
+                     'asa',
+                     'bigip',
+                     'cheetah',
+                     'comware',
+                     'dnac',
+                     'gaia',
+                     'ios',
+                     'iosxe',
+                     'iosxr',
+                     'ironware',
+                     'junos',
+                     'linux',
+                     'nxos',
+                     'sros',
+                     'viptela'}
 
     def __init__(self, nos):
         self.mock_pyats_device = Device('Mock')
