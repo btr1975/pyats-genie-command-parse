@@ -14,8 +14,8 @@ packages = [
 ]
 
 install_requires = [
-    'pyats == 22.3',
-    'genie == 22.3',
+    'pyats == 22.5',
+    'genie == 22.5',
 ]
 
 tests_require = [
@@ -58,5 +58,6 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
     ],
 )
