@@ -39,6 +39,7 @@ ios_show_interfaces_parsed = {
                            'err_disabled': False, 'keepalive': 10,
                            'duplex_mode': 'full', 'port_speed': '1000mb/s', 'media_type': '10/100/1000BaseTX',
                            'flow_control': {'receive': False, 'send': False}, 'arp_type': 'arpa',
+                           'is_deleted': False,
                            'arp_timeout': '04:00:00', 'last_input': 'never', 'last_output': 'never',
                            'output_hang': 'never',
                            'queues': {'input_queue_size': 0, 'input_queue_max': 75, 'input_queue_drops': 0,

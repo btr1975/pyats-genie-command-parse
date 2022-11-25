@@ -1,0 +1,9 @@
+---
+blank_issues_enabled: true
+contact_links:
+  - name: Genie Documentation
+    url: https://developer.cisco.com/docs/genie-docs/
+    about: The Genie Documentation
+  - name: Genie Parsers Source
+    url: https://github.com/CiscoTestAutomation/genieparser/tree/master/src/genie/libs/parser
+    about: The Genie Parsers Source
