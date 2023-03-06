@@ -25,7 +25,7 @@ class GenieCommandParse:
     """
 
     # This is a Mock Device to engage the parser
-    class MockDevice:
+    class MockDevice:  # pylint: disable=too-few-public-methods
         """
         Class that is a mock device to parse
 
@@ -36,7 +36,7 @@ class GenieCommandParse:
         def __init__(self, show_output_data):
             self.show_output_data = show_output_data
 
-        def execute(self, *args, **kwargs):
+        def execute(self, *args, **kwargs):  # pylint: disable=unused-argument
             """
             Method to execute the MockDevice
 
@@ -75,7 +75,7 @@ class GenieCommandParse:
         self.mock_pyats_device.custom = {'abstraction': {'order': ['os']}}
 
         if nos not in self.supported_nos:
-            raise LookupError('nos needs to be one of theses options {}'.format(self.supported_nos))
+            raise LookupError(f'nos needs to be one of theses options {self.supported_nos}')
 
         self.nos = nos
         self.mock_pyats_device.os = nos
@@ -100,12 +100,12 @@ class GenieCommandParse:
 
         """
         if not isinstance(show_output_data, str):
-            raise TypeError('show_output_data must be a string received a {}'.format(type(show_output_data)))
+            raise TypeError(f'show_output_data must be a string received a {type(show_output_data)}')
 
         self.show_output_data = show_output_data
 
         if not isinstance(show_command, str):
-            raise TypeError('show_command must be a string received a {}'.format(type(show_command)))
+            raise TypeError(f'show_command must be a string received a {type(show_command)}')
 
         return self.__parse(show_command)
 
@@ -126,10 +126,10 @@ class GenieCommandParse:
 
         """
         if not isinstance(show_command, str):
-            raise TypeError('show_command must be a string received a {}'.format(type(show_command)))
+            raise TypeError(f'show_command must be a string received a {type(show_command)}')
 
-        with open(file_name_and_path, 'r', encoding='utf-8') as f:
-            self.show_output_data = f.read()
+        with open(file_name_and_path, 'r', encoding='utf-8') as file:
+            self.show_output_data = file.read()
 
         return self.__parse(show_command)
 
@@ -148,7 +148,7 @@ class GenieCommandParse:
 
         """
         if not isinstance(string_item, str):  # pragma: no cover
-            raise TypeError('string_item must be a string received a {}'.format(type(string_item)))
+            raise TypeError(f'string_item must be a string received a {type(string_item)}')
 
         string_item = ' '.join(string_item.split())
         return string_item
@@ -168,13 +168,13 @@ class GenieCommandParse:
 
         """
         if not isinstance(show_command, str):  # pragma: no cover
-            raise TypeError('show_command must be a string received a {}'.format(type(show_command)))
+            raise TypeError(f'show_command must be a string received a {type(show_command)}')
 
-        md = self.MockDevice(self.show_output_data)
+        mock_device = self.MockDevice(self.show_output_data)
         try:
             found_parser = get_parser(self.__remove_extra_spaces(show_command), self.mock_pyats_device)[0]
-            return found_parser(device=md).parse()
+            return found_parser(device=mock_device).parse()
 
-        except Exception as e:
-            raise ModuleNotFoundError('Could not find module_name for command {} '
-                                      'for nos {} from genie: {}'.format(show_command, self.nos, e)) from e
+        except Exception as error:
+            raise ModuleNotFoundError(f'Could not find module_name for command {show_command} '
+                                      f'for nos {self.nos} from genie: {error}') from error

@@ -49,4 +49,4 @@ jobs:
         coverage report
     - name: Lint with pylint
       run: |
-        pylint --disable=W0613,R0903 ./pyats_genie_command_parse/pyats_genie_command_parse.py
+        pylint ./pyats_genie_command_parse/pyats_genie_command_parse.py
