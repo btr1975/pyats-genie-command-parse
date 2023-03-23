@@ -12,12 +12,19 @@
 #
 import os
 import sys
+import tomli
 base_path = os.path.split(os.path.join(os.path.abspath(os.path.dirname(__name__))))[0]
 sys.path.append(base_path)
-about = {}
-with open(os.path.join(base_path, 'pyats_genie_command_parse', 'version.py'), 'r', encoding='utf-8') as f:
-    exec(f.read(), about)
 
+# Reads version.py and converts to a dict of keys
+version_py = {}
+with open(os.path.join(base_path, 'pyats_genie_command_parse', 'version.py'), 'r', encoding='utf-8') as f:
+    exec(f.read(), version_py)
+
+# Reads pyproject.toml and converts to python objects
+with open(os.path.join(base_path, 'pyproject.toml'), 'r', encoding='utf-8') as file:
+    toml = file.read()
+pyproject_toml = tomli.loads(toml)
 
 # -- Added for readthedocs.org -----------------------------------------------
 
@@ -26,11 +33,16 @@ master_doc = 'index'
 # -- Project information -----------------------------------------------------
 
 # The full version, including alpha/beta/rc tags
-release = about['__version__']
+release = version_py['__version__']
+project = f"{pyproject_toml['project']['name']} v{release}"
+copyright = version_py['__copyright__']
 
-project = f'{about["__title__"]} v{release}'
-copyright = about['__copyright__']
-author = about['__author__']
+# Reads authors from pyproject.toml and adds name to list
+authors = []
+for author_name in pyproject_toml['project']['authors']:
+    authors.append(author_name.get('name'))
+
+author = ','.join(authors)
 
 # -- General configuration ---------------------------------------------------
 

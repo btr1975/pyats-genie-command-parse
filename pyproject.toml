@@ -1,0 +1,87 @@
+[build-system]
+requires = [
+    "setuptools>=67.6.0",
+    "wheel>=0.40.0"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyats-genie-command-parse"
+dynamic = ["version", "readme", "dependencies"]
+requires-python = ">=3.8"
+description = "Run genie parsers directly."
+keywords = [
+    "pyATS",
+    "genie",
+    "cisco",
+    "ios",
+    "ios-xr",
+    "nxos",
+    "parse",
+    "wrapper",
+]
+authors = [
+  { name="Benjamin P. Trachtenberg", email="e_ben_75-python@yahoo.com" },
+  { name="Brett Gianpetro", email="e_ben_75-python@yahoo.com" },
+]
+maintainers = [
+  {name = "Benjamin P. Trachtenberg", email = "e_ben_75-python@yahoo.com"},
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: POSIX",
+    "Operating System :: POSIX :: BSD",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[project.urls]
+Documentation = "https://pyats-genie-command-parse.readthedocs.io/en/latest/"
+Source = "https://github.com/btr1975/pyats-genie-command-parse"
+Tracker = "https://github.com/btr1975/pyats-genie-command-parse/issues"
+
+[tool.setuptools]
+packages = [
+    "pyats_genie_command_parse",
+]
+zip-safe = false
+
+[tool.setuptools.dynamic]
+version = {attr = "pyats_genie_command_parse.version.__version__"}
+readme = {file = "README.md", content-type = "text/markdown"}
+dependencies = {file = "requirements.txt"}
+
+[tool.distutils.bdist_wheel]
+universal = true
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers"
+markers = [
+    "generic_tests: marks tests as generic_tests (deselect with -m not generic_tests)",
+    "ios_tests: marks tests as ios_tests (deselect with -m not ios_tests)",
+]
+
+[tool.coverage.run]
+command_line= "-m pytest -vvv"
+
+[tool.coverage.report]
+include = [
+    "pyats_genie_command_parse/*"
+]
+
+[tool.pylint]
+max-line-length = 120
+# This allows pylint to complain on FIXME and XXX notes
+notes = [
+    "FIXME",
+    "XXX",
+]

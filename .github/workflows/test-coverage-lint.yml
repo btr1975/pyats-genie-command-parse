@@ -24,10 +24,10 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - 3.7
           - 3.8
           - 3.9
           - '3.10'
+          - '3.11'
 
     steps:
     - uses: actions/checkout@v3
@@ -35,18 +35,18 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies MAIN
+    - name: Upgrade pip setuptools wheel
       run: |
         python -m pip install --upgrade pip setuptools wheel
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Install dependencies TESTS for some reason doing it in one install creates backtracking
+    - name: Install requirements from requirements-dev.txt
       run: |
-        if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
-    - name: Test with pytest and coverage
+        pip install -r requirements-dev.txt
+    - name: Run Linting
       run: |
-        coverage erase
-        coverage run
-        coverage report
-    - name: Lint with pylint
+        make pylint
+    - name: Run Unit-Testing and Coverage
       run: |
-        pylint ./pyats_genie_command_parse/pyats_genie_command_parse.py
+        make coverage
+    - name: Run Build
+      run: |
+        make build
