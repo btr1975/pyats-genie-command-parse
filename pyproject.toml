@@ -48,10 +48,16 @@ Documentation = "https://pyats-genie-command-parse.readthedocs.io/en/latest/"
 Source = "https://github.com/btr1975/pyats-genie-command-parse"
 Tracker = "https://github.com/btr1975/pyats-genie-command-parse/issues"
 
-[tool.setuptools]
-packages = [
-    "pyats_genie_command_parse",
+[tool.setuptools.packages.find]
+include = [
+    "pyats_genie_command_parse*",
 ]
+
+# Add or remove file extensions to include the data
+[tool.setuptools.package-data]
+"*" = ["*.txt", "*.rst"]
+
+[tool.setuptools]
 zip-safe = false
 
 [tool.setuptools.dynamic]
