@@ -31,23 +31,20 @@ class GenieCommandParse:
 
         :type show_output_data: String
         :param show_output_data: The output data from the show command
-
         """
-        def __init__(self, show_output_data):
+        def __init__(self, show_output_data: str) -> None:
             self.show_output_data = show_output_data
 
-        def execute(self, *args, **kwargs):  # pylint: disable=unused-argument
-            """
-            Method to execute the MockDevice
+        def execute(self, *args, **kwargs) -> str:  # pylint: disable=unused-argument
+            """Method to execute the MockDevice
 
             :type args: Arguments
             :param args: Unknown
-            :type kwargs: Keywood Arguments
+            :type kwargs: Keyword Arguments
             :param kwargs: Unknown
 
             :rtype: String
             :return: The output data from the show command
-
             """
             return self.show_output_data
 
@@ -70,7 +67,7 @@ class GenieCommandParse:
                      'sros',
                      'viptela'}
 
-    def __init__(self, nos):
+    def __init__(self, nos) -> None:
         self.mock_pyats_device = Device('Mock')
         self.mock_pyats_device.custom = {'abstraction': {'order': ['os']}}
 
@@ -83,9 +80,8 @@ class GenieCommandParse:
         self.show_output_data = None
         self.show_command = None
 
-    def parse_string(self, show_command, show_output_data):
-        """
-        Method to parse a show command using string data
+    def parse_string(self, show_command: str, show_output_data: str) -> dict:
+        """Method to parse a show command using string data
 
         :type show_command: String
         :param show_command: The show command to parse for, use full command!!
@@ -97,7 +93,6 @@ class GenieCommandParse:
 
         :raises TypeError: if the show_command is not a string
         :raises TypeError: if the show_output_data is not a string
-
         """
         if not isinstance(show_output_data, str):
             raise TypeError(f'show_output_data must be a string received a {type(show_output_data)}')
@@ -109,9 +104,8 @@ class GenieCommandParse:
 
         return self.__parse(show_command)
 
-    def parse_file(self, show_command, file_name_and_path):
-        """
-        Method to parse a show command using a text file
+    def parse_file(self, show_command: str, file_name_and_path: str) -> dict:
+        """Method to parse a show command using a text file
 
         :type show_command: String
         :param show_command: The show command to parse for, use full command!!
@@ -123,7 +117,6 @@ class GenieCommandParse:
 
         :raises TypeError: if the show_command is not a string
         :raises FileNotFoundError: if the file you are trying to parse can't be found
-
         """
         if not isinstance(show_command, str):
             raise TypeError(f'show_command must be a string received a {type(show_command)}')
@@ -134,18 +127,16 @@ class GenieCommandParse:
         return self.__parse(show_command)
 
     @staticmethod
-    def __remove_extra_spaces(string_item):
-        """
-        Private Method to remove extra spaces from a string
+    def __remove_extra_spaces(string_item: str) -> str:
+        """Private Method to remove extra spaces from a string
 
         :type string_item: String
-        :param string_item: The you want to remove spaces from
+        :param string_item: The string you want to remove spaces from
 
         :rtype: String
-        :return: String with single spacing
+        :return: string_item with single spacing
 
         :raises TypeError: if the string_item is not a string
-
         """
         if not isinstance(string_item, str):  # pragma: no cover
             raise TypeError(f'string_item must be a string received a {type(string_item)}')
@@ -153,9 +144,8 @@ class GenieCommandParse:
         string_item = ' '.join(string_item.split())
         return string_item
 
-    def __parse(self, show_command):
-        """
-        Private Method to parse commands using Genie parser
+    def __parse(self, show_command: str) -> dict:
+        """Private Method to parse commands using Genie parser
 
         :type show_command: String
         :param show_command: The show command to parse for, use full command!!
@@ -165,7 +155,6 @@ class GenieCommandParse:
 
         :raises TypeError: if the show_command is not a string
         :raises ModuleNotFoundError: If it can not find a command to NOS mapping
-
         """
         if not isinstance(show_command, str):  # pragma: no cover
             raise TypeError(f'show_command must be a string received a {type(show_command)}')
