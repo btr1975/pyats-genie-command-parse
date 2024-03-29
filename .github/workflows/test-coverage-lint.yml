@@ -48,6 +48,7 @@ jobs:
         make pylint
 
   testing-coverage:
+    needs: linting
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -80,6 +81,7 @@ jobs:
           make build
 
   build:
+    needs: testing-coverage
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
