@@ -21,6 +21,7 @@ jobs:
   linting:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         python-version:
           - 3.8
@@ -51,6 +52,7 @@ jobs:
     needs: linting
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         python-version:
           - 3.8
@@ -84,6 +86,7 @@ jobs:
     needs: testing-coverage
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         python-version:
           - 3.8
