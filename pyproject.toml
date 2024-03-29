@@ -84,6 +84,7 @@ command_line= "-m pytest -vvv"
 include = [
     "pyats_genie_command_parse/*"
 ]
+fail_under = 70
 
 [tool.pylint]
 max-line-length = 120
@@ -92,3 +93,4 @@ notes = [
     "FIXME",
     "XXX",
 ]
+fail-under = 9.9
