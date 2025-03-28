@@ -1,6 +1,6 @@
 -r requirements.txt
-build~=1.0.3
-tomli~=2.0.1
+build~=1.2.2
+tomli~=2.2.1
 pytest-cov~=4.1.0
 sphinx~=7.1.2
 pylint~=2.17.5
