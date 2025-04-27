@@ -8,6 +8,7 @@ All that is needed to parse the data, is telling the class what NOS, what
 the full command is, and the output string data from the command.
 
 """
+
 from genie.libs.parser.utils.common import get_parser
 from pyats.topology import Device
 
@@ -32,6 +33,7 @@ class GenieCommandParse:
         :type show_output_data: String
         :param show_output_data: The output data from the show command
         """
+
         def __init__(self, show_output_data: str) -> None:
             self.show_output_data = show_output_data
 
@@ -49,30 +51,32 @@ class GenieCommandParse:
             return self.show_output_data
 
     # Set to hold supported nos
-    supported_nos = {'aireos',
-                     'apic',
-                     'asa',
-                     'bigip',
-                     'cheetah',
-                     'comware',
-                     'dnac',
-                     'gaia',
-                     'ios',
-                     'iosxe',
-                     'iosxr',
-                     'ironware',
-                     'junos',
-                     'linux',
-                     'nxos',
-                     'sros',
-                     'viptela'}
+    supported_nos = {
+        "aireos",
+        "apic",
+        "asa",
+        "bigip",
+        "cheetah",
+        "comware",
+        "dnac",
+        "gaia",
+        "ios",
+        "iosxe",
+        "iosxr",
+        "ironware",
+        "junos",
+        "linux",
+        "nxos",
+        "sros",
+        "viptela",
+    }
 
     def __init__(self, nos) -> None:
-        self.mock_pyats_device = Device('Mock')
-        self.mock_pyats_device.custom = {'abstraction': {'order': ['os']}}
+        self.mock_pyats_device = Device("Mock")
+        self.mock_pyats_device.custom = {"abstraction": {"order": ["os"]}}
 
         if nos not in self.supported_nos:
-            raise LookupError(f'nos needs to be one of theses options {self.supported_nos}')
+            raise LookupError(f"nos needs to be one of theses options {self.supported_nos}")
 
         self.nos = nos
         self.mock_pyats_device.os = nos
@@ -95,12 +99,12 @@ class GenieCommandParse:
         :raises TypeError: if the show_output_data is not a string
         """
         if not isinstance(show_output_data, str):
-            raise TypeError(f'show_output_data must be a string received a {type(show_output_data)}')
+            raise TypeError(f"show_output_data must be a string received a {type(show_output_data)}")
 
         self.show_output_data = show_output_data
 
         if not isinstance(show_command, str):
-            raise TypeError(f'show_command must be a string received a {type(show_command)}')
+            raise TypeError(f"show_command must be a string received a {type(show_command)}")
 
         return self.__parse(show_command)
 
@@ -119,9 +123,9 @@ class GenieCommandParse:
         :raises FileNotFoundError: if the file you are trying to parse can't be found
         """
         if not isinstance(show_command, str):
-            raise TypeError(f'show_command must be a string received a {type(show_command)}')
+            raise TypeError(f"show_command must be a string received a {type(show_command)}")
 
-        with open(file_name_and_path, 'r', encoding='utf-8') as file:
+        with open(file_name_and_path, "r", encoding="utf-8") as file:
             self.show_output_data = file.read()
 
         return self.__parse(show_command)
@@ -139,9 +143,9 @@ class GenieCommandParse:
         :raises TypeError: if the string_item is not a string
         """
         if not isinstance(string_item, str):  # pragma: no cover
-            raise TypeError(f'string_item must be a string received a {type(string_item)}')
+            raise TypeError(f"string_item must be a string received a {type(string_item)}")
 
-        string_item = ' '.join(string_item.split())
+        string_item = " ".join(string_item.split())
         return string_item
 
     def __parse(self, show_command: str) -> dict:
@@ -157,7 +161,7 @@ class GenieCommandParse:
         :raises ModuleNotFoundError: If it can not find a command to NOS mapping
         """
         if not isinstance(show_command, str):  # pragma: no cover
-            raise TypeError(f'show_command must be a string received a {type(show_command)}')
+            raise TypeError(f"show_command must be a string received a {type(show_command)}")
 
         mock_device = self.MockDevice(self.show_output_data)
         try:
@@ -165,5 +169,6 @@ class GenieCommandParse:
             return found_parser(device=mock_device).parse()
 
         except Exception as error:
-            raise ModuleNotFoundError(f'Could not find module_name for command {show_command} '
-                                      f'for nos {self.nos} from genie: {error}') from error
+            raise ModuleNotFoundError(
+                f"Could not find module_name for command {show_command} " f"for nos {self.nos} from genie: {error}"
+            ) from error
