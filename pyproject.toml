@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyats-genie-command-parse"
-dynamic = ["version", "readme", "dependencies"]
+dynamic = ["version", "readme"]
 requires-python = ">=3.9"
 description = "Run genie parsers directly."
 keywords = [
@@ -27,10 +27,12 @@ authors = [
 maintainers = [
   {name = "Benjamin P. Trachtenberg", email = "e_ben_75-python@yahoo.com"},
 ]
-license = {file = "LICENSE"}
+license = "MIT"
+license-files = [
+    "LICENSE"
+]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
-    "License :: OSI Approved :: MIT License",
     "Intended Audience :: Developers",
     "Natural Language :: English",
     "Operating System :: POSIX",
@@ -42,6 +44,21 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "genie==25.2",
+    "pyats==25.2",
+]
+
+[dependency-groups]
+dev = [
+    "bandit>=1.8.3",
+    "black>=25.1.0",
+    "pylint>=3.3.6",
+    "pytest-cov>=4.1.0",
+    "sphinx>=7.4.7",
+    "tomli>=2.2.1",
 ]
 
 [project.urls]
@@ -64,7 +81,6 @@ zip-safe = false
 [tool.setuptools.dynamic]
 version = {attr = "pyats_genie_command_parse.version.__version__"}
 readme = {file = "README.md", content-type = "text/markdown"}
-dependencies = {file = "requirements.txt"}
 
 [tool.pytest.ini_options]
 addopts = "--strict-markers"
@@ -90,3 +106,19 @@ notes = [
     "XXX",
 ]
 fail-under = 9.9
+
+[tool.black]
+line-length = 120
+
+[tool.bandit]
+exclude_dirs = [
+    "tests",
+    "venv",
+    "docs",
+]
+
+# UV settings reference https://docs.astral.sh/uv/reference/settings/
+
+[tool.uv]
+keyring-provider = "subprocess"
+native-tls = true
