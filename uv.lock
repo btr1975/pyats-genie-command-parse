@@ -1960,6 +1960,7 @@ wheels = [
 
 [[package]]
 name = "pyats-genie-command-parse"
+version = "1.4.5"
 source = { editable = "." }
 dependencies = [
     { name = "genie" },
@@ -1975,7 +1976,7 @@ dev = [
     { name = "sphinx", version = "7.4.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "sphinx", version = "8.1.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.10.*'" },
     { name = "sphinx", version = "8.2.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
-    { name = "tomli" },
+    { name = "tomli", marker = "python_full_version < '3.11'" },
 ]
 
 [package.metadata]
@@ -1991,7 +1992,7 @@ dev = [
     { name = "pylint", specifier = ">=3.3.6" },
     { name = "pytest-cov", specifier = ">=4.1.0" },
     { name = "sphinx", specifier = ">=7.4.7" },
-    { name = "tomli", specifier = ">=2.2.1" },
+    { name = "tomli", marker = "python_full_version < '3.11'", specifier = ">=2.2.1" },
 ]
 
 [[package]]
