@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pyats-genie-command-parse"
 dynamic = ["readme"]
-version = "1.4.7"
+version = "1.4.8"
 requires-python = ">=3.10"
 description = "Run genie parsers directly."
 keywords = [
@@ -48,8 +48,8 @@ classifiers = [
 ]
 
 dependencies = [
-    "genie==26.3",
-    "pyats==26.3",
+    "genie==26.5",
+    "pyats==26.5",
 ]
 
 [dependency-groups]
@@ -121,4 +121,4 @@ exclude_dirs = [
 
 [tool.uv]
 keyring-provider = "subprocess"
-native-tls = true
+system-certs = true
