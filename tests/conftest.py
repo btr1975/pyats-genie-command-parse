@@ -1,9 +1,9 @@
-import os
+from pathlib import Path
 import sys
 import pytest
 
-base_path = os.path.join(os.path.abspath(os.path.dirname(__name__)))
-sys.path.append(os.path.join(base_path))
+base_path = Path(__name__).parent.parent.resolve().as_posix()
+sys.path.append(base_path)
 from tests.test_data import (
     ios_show_interfaces_string,
     ios_show_interfaces_parsed,
